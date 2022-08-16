@@ -1,3 +1,7 @@
+## Instructions to run
+    docker compose up --build
+
+### Note for Apple M1 Chip Users
 If you are on a M-1 Apple Mac, you will need to issue the following command:
 
     export DOCKER_DEFAULT_PLATFORM=linux/amd64
