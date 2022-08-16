@@ -1,6 +1,11 @@
 ## Instructions to run
     docker compose up --build
 
+then visit
+    http://localhost:8000
+for a swagger-ui experience to explore the API.
+
+
 ### Note for Apple M1 Chip Users
 If you are on a M-1 Apple Mac, you will need to issue the following command:
 
