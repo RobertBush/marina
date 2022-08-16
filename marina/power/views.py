@@ -1,7 +1,11 @@
 from django.shortcuts import render
 
 from marina.power.models import Boat, Engine, BoatEngine
-from marina.power.serializers import BoatSerializer, EngineSerializer, BoatEngineSerializer
+from marina.power.serializers import (
+    BoatSerializer,
+    EngineSerializer,
+    BoatEngineSerializer,
+)
 from rest_framework import generics
 
 

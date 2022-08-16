@@ -8,10 +8,12 @@ class Boat(models.Model):
     model_year = models.IntegerField()
     custom_description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=12, decimal_places=2)
-    engines = models.ManyToManyField('Engine', blank=True, through='BoatEngine', related_name='boats')
+    engines = models.ManyToManyField(
+        "Engine", blank=True, through="BoatEngine", related_name="boats"
+    )
 
     def __str__(self):
-        return f'{self.model_year} {self.manufacturer} {self.model_name} - {self.price}'
+        return f"{self.model_year} {self.manufacturer} {self.model_name} - {self.price}"
 
 
 class Engine(models.Model):
@@ -24,7 +26,7 @@ class Engine(models.Model):
     hours_of_operation = models.IntegerField()
 
     def __str__(self):
-        return f'{self.model_year} {self.manufacturer} {self.model_name} - {self.price}'
+        return f"{self.model_year} {self.manufacturer} {self.model_name} - {self.price}"
 
 
 class BoatEngine(models.Model):
@@ -34,7 +36,11 @@ class BoatEngine(models.Model):
     date_removed = models.DateField(blank=True, null=True)
 
     class Meta:
-        unique_together = ('boat', 'engine', 'date_attached',)
+        unique_together = (
+            "boat",
+            "engine",
+            "date_attached",
+        )
 
     def __str__(self):
-        return f'{self.boat} with {self.engine}'
+        return f"{self.boat} with {self.engine}"

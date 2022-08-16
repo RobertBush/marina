@@ -8,51 +8,89 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Boat',
+            name="Boat",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('manufacturer', models.CharField(max_length=200)),
-                ('hull_number', models.CharField(max_length=200)),
-                ('model_name', models.CharField(max_length=200)),
-                ('model_year', models.IntegerField()),
-                ('custom_description', models.TextField(blank=True)),
-                ('price', models.DecimalField(decimal_places=2, max_digits=12)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("manufacturer", models.CharField(max_length=200)),
+                ("hull_number", models.CharField(max_length=200)),
+                ("model_name", models.CharField(max_length=200)),
+                ("model_year", models.IntegerField()),
+                ("custom_description", models.TextField(blank=True)),
+                ("price", models.DecimalField(decimal_places=2, max_digits=12)),
             ],
         ),
         migrations.CreateModel(
-            name='Engine',
+            name="Engine",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('manufacturer', models.CharField(max_length=200)),
-                ('serial_number', models.CharField(max_length=200)),
-                ('model_name', models.CharField(max_length=200)),
-                ('model_year', models.IntegerField()),
-                ('custom_description', models.TextField(blank=True)),
-                ('price', models.DecimalField(decimal_places=2, max_digits=12)),
-                ('hours_of_operation', models.IntegerField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("manufacturer", models.CharField(max_length=200)),
+                ("serial_number", models.CharField(max_length=200)),
+                ("model_name", models.CharField(max_length=200)),
+                ("model_year", models.IntegerField()),
+                ("custom_description", models.TextField(blank=True)),
+                ("price", models.DecimalField(decimal_places=2, max_digits=12)),
+                ("hours_of_operation", models.IntegerField()),
             ],
         ),
         migrations.CreateModel(
-            name='BoatEngine',
+            name="BoatEngine",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('date_attached', models.DateField(blank=True, null=True)),
-                ('date_removed', models.DateField(blank=True, null=True)),
-                ('boat', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='power.boat')),
-                ('engine', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='power.engine')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("date_attached", models.DateField(blank=True, null=True)),
+                ("date_removed", models.DateField(blank=True, null=True)),
+                (
+                    "boat",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="power.boat"
+                    ),
+                ),
+                (
+                    "engine",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="power.engine"
+                    ),
+                ),
             ],
             options={
-                'unique_together': {('boat', 'engine', 'date_attached')},
+                "unique_together": {("boat", "engine", "date_attached")},
             },
         ),
         migrations.AddField(
-            model_name='boat',
-            name='engines',
-            field=models.ManyToManyField(blank=True, related_name='boats', through='power.BoatEngine', to='power.engine'),
+            model_name="boat",
+            name="engines",
+            field=models.ManyToManyField(
+                blank=True,
+                related_name="boats",
+                through="power.BoatEngine",
+                to="power.engine",
+            ),
         ),
     ]
