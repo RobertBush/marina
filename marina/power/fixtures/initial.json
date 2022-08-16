@@ -1,1 +1,72 @@
-[{"model": "power.boat", "pk": 1, "fields": {"manufacturer": "Key West", "hull_number": "KWFOOBAR1234", "model_name": "Sportsman 1900", "model_year": 2005, "custom_description": "Well-maintained and stored on a lift under shade.", "price": "12000.00"}}, {"model": "power.engine", "pk": 1, "fields": {"manufacturer": "Yamaha", "serial_number": "FJ115KDJ29378", "model_name": "F115", "model_year": 2005, "custom_description": "Low Hours! slight cosmetic damage to cowling.", "price": "8000.00", "hours_of_operation": 194}}, {"model": "power.boatengine", "pk": 1, "fields": {"boat": 1, "engine": 1, "date_attached": "2005-06-07", "date_removed": null}}]
+[
+  {
+    "model": "power.boat",
+    "pk": 1,
+    "fields": {
+      "manufacturer": "Key West",
+      "hull_number": "KWFOOBAR1234",
+      "model_name": "Sportsman 1900",
+      "model_year": 2005,
+      "custom_description": "Well-maintained and stored on a lift under shade.",
+      "price": "12000.00"
+    }
+  },
+  {
+    "model": "power.boat",
+    "pk": 2,
+    "fields": {
+      "manufacturer": "Key West",
+      "hull_number": "KW220FS1235",
+      "model_name": "220 FS",
+      "model_year": 2022,
+      "custom_description": "Brand new Family Sportsman",
+      "price": "66240.00"
+    }
+  },
+  {
+    "model": "power.engine",
+    "pk": 1,
+    "fields": {
+      "manufacturer": "Yamaha",
+      "serial_number": "FJ115KDJ29378",
+      "model_name": "F115",
+      "model_year": 2005,
+      "custom_description": "Low Hours! slight cosmetic damage to cowling.",
+      "price": "8000.00",
+      "hours_of_operation": 194
+    }
+  },
+  {
+    "model": "power.engine",
+    "pk": 2,
+    "fields": {
+      "manufacturer": "Suzuki",
+      "serial_number": "SUZ1234",
+      "model_name": "S250",
+      "model_year": 2022,
+      "custom_description": "Brand new 250 HP",
+      "price": "20000.00",
+      "hours_of_operation": 0
+    }
+  },
+  {
+    "model": "power.boatengine",
+    "pk": 1,
+    "fields": {
+      "boat": 1,
+      "engine": 1,
+      "date_attached": "2005-06-07",
+      "date_removed": null
+    }
+  },
+  {
+    "model": "power.boatengine",
+    "pk": 2,
+    "fields": {
+      "boat": 2,
+      "engine": 2,
+      "date_attached": "2022-08-15",
+      "date_removed": null
+    }
+  }
+]
