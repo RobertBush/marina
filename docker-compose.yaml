@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  marina_api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+        - ./marina:/marina
+    env_file:
+      - marina_postgres.env
+      - marina_api.env
+    depends_on:
+      marina_database:
+        condition: service_healthy
+  marina_database:
+    image: "postgres:latest"
+    env_file:
+      - marina_postgres.env
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 2s
+      timeout: 4s
+      retries: 3
