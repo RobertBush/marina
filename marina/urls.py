@@ -8,53 +8,42 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,
 )
 
+detail_actions = {
+    "get": "retrieve",
+    "put": "update",
+    "delete": "destroy",
+    "patch": "partial_update",
+}
+
+list_actions = {
+    "get": "list",
+    "post": "create",
+}
+
 urlpatterns = [
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
     path("", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
     path("redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
-    path(
-        "boats/", views.BoatViewSet.as_view(actions={"get": "list", "post": "create"})
-    ),
+    path("boats/", views.BoatViewSet.as_view(actions=list_actions)),
     path(
         "boats/<int:pk>/",
-        views.BoatViewSet.as_view(
-            actions={
-                "get": "retrieve",
-                "put": "update",
-                "delete": "destroy",
-                "patch": "partial_update",
-            }
-        ),
+        views.BoatViewSet.as_view(actions=detail_actions),
     ),
     path(
         "engines/",
-        views.EngineViewSet.as_view(actions={"get": "list", "post": "create"}),
+        views.EngineViewSet.as_view(actions=list_actions),
     ),
     path(
         "engines/<int:pk>/",
-        views.EngineViewSet.as_view(
-            actions={
-                "get": "retrieve",
-                "put": "update",
-                "delete": "destroy",
-                "patch": "partial_update",
-            }
-        ),
+        views.EngineViewSet.as_view(actions=detail_actions),
     ),
     path(
         "boatengines/",
-        views.BoatEngineViewSet.as_view(actions={"get": "list", "post": "create"}),
+        views.BoatEngineViewSet.as_view(actions=list_actions),
     ),
     path(
         "boatengines/<int:pk>/",
-        views.BoatEngineViewSet.as_view(
-            actions={
-                "get": "retrieve",
-                "put": "update",
-                "delete": "destroy",
-                "patch": "partial_update",
-            }
-        ),
+        views.BoatEngineViewSet.as_view(actions=detail_actions),
     ),
     path("admin/", admin.site.urls),
 ]
