@@ -12,12 +12,50 @@ urlpatterns = [
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
     path("", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
     path("redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
-    path("boats/", views.BoatList.as_view()),
-    path("boats/<int:pk>/", views.BoatDetail.as_view()),
-    path("engines/", views.EngineList.as_view()),
-    path("engines/<int:pk>/", views.EngineDetail.as_view()),
-    path("boatengines/", views.BoatEngineList.as_view()),
-    path("boatengines/<int:pk>/", views.BoatEngineDetail.as_view()),
+    path(
+        "boats/", views.BoatViewSet.as_view(actions={"get": "list", "post": "create"})
+    ),
+    path(
+        "boats/<int:pk>/",
+        views.BoatViewSet.as_view(
+            actions={
+                "get": "retrieve",
+                "put": "update",
+                "delete": "destroy",
+                "patch": "partial_update",
+            }
+        ),
+    ),
+    path(
+        "engines/",
+        views.EngineViewSet.as_view(actions={"get": "list", "post": "create"}),
+    ),
+    path(
+        "engines/<int:pk>/",
+        views.EngineViewSet.as_view(
+            actions={
+                "get": "retrieve",
+                "put": "update",
+                "delete": "destroy",
+                "patch": "partial_update",
+            }
+        ),
+    ),
+    path(
+        "boatengines/",
+        views.BoatEngineViewSet.as_view(actions={"get": "list", "post": "create"}),
+    ),
+    path(
+        "boatengines/<int:pk>/",
+        views.BoatEngineViewSet.as_view(
+            actions={
+                "get": "retrieve",
+                "put": "update",
+                "delete": "destroy",
+                "patch": "partial_update",
+            }
+        ),
+    ),
     path("admin/", admin.site.urls),
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)

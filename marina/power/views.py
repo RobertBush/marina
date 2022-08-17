@@ -1,39 +1,22 @@
-from django.shortcuts import render
-
 from marina.power.models import Boat, Engine, BoatEngine
 from marina.power.serializers import (
     BoatSerializer,
     EngineSerializer,
     BoatEngineSerializer,
 )
-from rest_framework import generics
+from rest_framework.viewsets import ModelViewSet
 
 
-class BoatList(generics.ListCreateAPIView):
+class BoatViewSet(ModelViewSet):
     queryset = Boat.objects.all()
     serializer_class = BoatSerializer
 
 
-class BoatDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Boat.objects.all()
-    serializer_class = BoatSerializer
-
-
-class EngineList(generics.ListCreateAPIView):
+class EngineViewSet(ModelViewSet):
     queryset = Engine.objects.all()
     serializer_class = EngineSerializer
 
 
-class EngineDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Engine.objects.all()
-    serializer_class = EngineSerializer
-
-
-class BoatEngineList(generics.ListCreateAPIView):
-    queryset = BoatEngine.objects.all()
-    serializer_class = BoatEngineSerializer
-
-
-class BoatEngineDetail(generics.RetrieveUpdateDestroyAPIView):
+class BoatEngineViewSet(ModelViewSet):
     queryset = BoatEngine.objects.all()
     serializer_class = BoatEngineSerializer
